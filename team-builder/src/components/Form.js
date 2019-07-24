@@ -11,16 +11,20 @@ export default function Form() {
   }
 
   return (
-    <div className="inputting-form">
-      <form>
-        <label>
-          Name:{" "}
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Enter Name Here"
-            value
-          />
+    <form onSubmit={handleSubmit}>
+      <fieldset>
+        <legend>Team Member Sign Up</legend>
+        <label for="username">
+          Name //{" "}
+          <div className="inputting-form">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Enter Name Here"
+              value={Teammember.name}
+              onChange={handleChange}
+            />
+          </div>
         </label>
 
         <label>
@@ -34,7 +38,7 @@ export default function Form() {
         <label>
           Role: <input type="text" placeholder="Enter your role here" />
         </label>
-      </form>
-    </div>
+      </fieldset>
+    </form>
   );
 }
