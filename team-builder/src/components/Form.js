@@ -1,42 +1,66 @@
 import React, { useState } from "react";
 
 export default function Form() {
-  const [TeamMember, setTeamMember] = useState({});
+  const [TeamMember, setTeamMember] = useState({
+    name: "",
+    email: "",
+    role: ""
+  });
 
   function changeHandler(event) {
     const createUser = {
       ...TeamMember,
       [event.target.name]: event.target.value
     };
+    setTeamMember(createUser);
   }
 
+  const submitHandler = e => {
+    e.preventdefault();
+  };
+
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={submitHandler}>
       <fieldset>
         <legend>Team Member Sign Up</legend>
         <label for="username">
-          Name //{" "}
+          Name
+          <div className="inputting-form">
+            <input
+              type="email"
+              className="form-control"
+              placeholder="Enter Name Here"
+              value={TeamMember.name}
+              onChange={changeHandler}
+            />
+          </div>
+        </label>
+
+        <label for="email">
+          Email
           <div className="inputting-form">
             <input
               type="text"
               className="form-control"
               placeholder="Enter Name Here"
-              value={Teammember.name}
-              onChange={handleChange}
+              value={TeamMember.name}
+              onChange={changeHandler}
             />
           </div>
         </label>
 
-        <label>
-          Email:{" "}
-          <input
-            type="email"
-            placeholder="example: BentleySwizzleton@gmail.com"
-          />
-        </label>
-
-        <label>
-          Role: <input type="text" placeholder="Enter your role here" />
+        <label for="username">
+          role
+          <div className="inputting-form">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Enter Name Here"
+              value={TeamMember.name}
+              onChange={changeHandler}
+            />
+          </div>
+          <button>Submit</button>
         </label>
       </fieldset>
     </form>
