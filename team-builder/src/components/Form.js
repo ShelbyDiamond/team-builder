@@ -25,7 +25,7 @@ export default function Form() {
         <legend>Team Member Sign Up</legend>
         <label for="username">
           Name
-          <div className="inputting-form">
+          <div className="inputting-form1">
             <input
               type="email"
               className="form-control"
@@ -38,25 +38,25 @@ export default function Form() {
 
         <label for="email">
           Email
-          <div className="inputting-form">
+          <div className="inputting-form2">
             <input
               type="text"
               className="form-control"
-              placeholder="Enter Name Here"
-              value={TeamMember.name}
+              placeholder="Enter Email Here"
+              value={TeamMember.value}
               onChange={changeHandler}
             />
           </div>
         </label>
 
         <label for="username">
-          role
-          <div className="inputting-form">
+          Role
+          <div className="inputting-form3">
             <input
               type="text"
               className="form-control"
-              placeholder="Enter Name Here"
-              value={TeamMember.name}
+              placeholder="Enter Position Here"
+              value={TeamMember.value}
               onChange={changeHandler}
             />
           </div>
