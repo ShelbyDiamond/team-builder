@@ -1,22 +1,40 @@
 import React, { useState } from "react";
 
-funtion Form() {
+export default function Form() {
+  const [TeamMember, setTeamMember] = useState({});
 
-    return (
-        <div className= "inputting-form">
-            <form>
-                <label>
-                    Name: <input type="text" placeholder="Enter Name Here"/>
-                </label>
+  function changeHandler(event) {
+    const createUser = {
+      ...TeamMember,
+      [event.target.name]: event.target.value
+    };
+  }
 
-                <label>
-                    Email: <input type="email" placeholder="example: BentleySwizzleton@gmail.com"/>
-                </label>
+  return (
+    <div className="inputting-form">
+      <form>
+        <label>
+          Name:{" "}
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Enter Name Here"
+            value
+          />
+        </label>
 
-                <label>
-                    Role: <input type="text" placeholder="Enter your role here"/>
-                </label>
-            </form>
-        </div>
-    )
+        <label>
+          Email:{" "}
+          <input
+            type="email"
+            placeholder="example: BentleySwizzleton@gmail.com"
+          />
+        </label>
+
+        <label>
+          Role: <input type="text" placeholder="Enter your role here" />
+        </label>
+      </form>
+    </div>
+  );
 }
