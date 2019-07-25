@@ -1,6 +1,11 @@
 import React from "react";
 
 export default function TeamMemberCard(props) {
+  const clicker = () => {
+    props.setUpdate(props.member);
+    props.setIsUpdating(true);
+  };
+
   return (
     <div>
       <p>
@@ -12,7 +17,7 @@ export default function TeamMemberCard(props) {
       <p>
         <strong>Role: </strong> {props.member.role}
       </p>
-      <button>Edit</button>
+      <button onClick={clicker}>Update</button>
     </div>
   );
 }

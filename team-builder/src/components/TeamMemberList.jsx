@@ -5,7 +5,11 @@ export default function TeamMemberList(props) {
   return (
     <div>
       {props.teamMember.map(member => (
-        <TeamMemberCard member={member} />
+        <TeamMemberCard
+          member={member}
+          setUpdate={props.setUpdate}
+          setIsUpdating={props.setIsUpdating}
+        />
       ))}
     </div>
   );

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
 //Id Generator
 let idCounter = () => {
   let id = 0;
@@ -16,6 +17,10 @@ export default function Form(props) {
     role: ""
   });
 
+  useEffect(() => {
+    setFormState(props.update);
+  }, [props.update]);
+
   const changeHandler = event => {
     setFormState({
       ...formState,
@@ -25,7 +30,18 @@ export default function Form(props) {
 
   const submitHandler = event => {
     event.preventDefault();
-    props.setTeamMember([...props.teamMember, { ...formState, id: idUp() }]);
+    if ([props.isUpdating]) {
+      props.setTeamMember([...props.teamMember, { ...formState, id: idUp() }]);
+    } else if (props.isUpdating) {
+      //spreadOp
+      const updatedList = props.members.filter(
+        member => member.id !== formState.id
+      );
+      const updatedListTwo = [...updatedList, formState];
+      props.setTeamMember(updatedListTwo);
+    }
+
+    setFormState({ name: "", email: "", role: "" });
   };
 
   return (
@@ -52,7 +68,10 @@ export default function Form(props) {
           value={formState.role}
           onChange={changeHandler}
         />
-        <button>Join the Family</button>
+        <button>
+          {props.isUpdating ? "Update Team Member" : "Add To Team"} Join the
+          Family
+        </button>
       </form>
     </div>
   );
