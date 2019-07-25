@@ -20,7 +20,7 @@ function App() {
       <TeamMemberList
         teamMember={teamMember}
         setUpdate={setUpdate}
-        setisUpdating={setIsUpdating}
+        setIsUpdating={setIsUpdating}
       />
     </div>
   );

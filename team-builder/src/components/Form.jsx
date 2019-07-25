@@ -30,14 +30,14 @@ export default function Form(props) {
 
   const submitHandler = event => {
     event.preventDefault();
-    if ([props.isUpdating]) {
+    if (!props.isUpdating) {
       props.setTeamMember([...props.teamMember, { ...formState, id: idUp() }]);
     } else if (props.isUpdating) {
       //spreadOp
-      const updatedList = props.members.filter(
+      let updatedList = props.teamMember.filter(
         member => member.id !== formState.id
       );
-      const updatedListTwo = [...updatedList, formState];
+      let updatedListTwo = [...updatedList, formState];
       props.setTeamMember(updatedListTwo);
     }
 
@@ -69,8 +69,7 @@ export default function Form(props) {
           onChange={changeHandler}
         />
         <button>
-          {props.isUpdating ? "Update Team Member" : "Add To Team"} Join the
-          Family
+          {props.isUpdating ? "Update Team Member" : "Join the Family"}
         </button>
       </form>
     </div>

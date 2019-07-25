@@ -1,6 +1,7 @@
 import React from "react";
 
 export default function TeamMemberCard(props) {
+  console.log(props.setIsUpdating);
   const clicker = () => {
     props.setUpdate(props.member);
     props.setIsUpdating(true);
